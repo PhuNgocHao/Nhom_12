@@ -1,8 +1,10 @@
 # Nhom_12
 #Dự án: Duolingo clone
-#Thành viên: 
-1. Phù Ngọc Hào
-2. Nguyễn Quốc Khải
-3. Trần Gia Huy
-4. Tạ Đăng Quang
-   
+
+# Thành viên nhóm
+
+- **Phù Ngọc Hào** - Frontend Developer - [GitHub]((https://github.com/PhuNgocHao))
+- **Nguyễn Quốc KHải** - Backend Developer - [GitHub](https://github.com/nguyenquockhai-gif)
+- **Tạ Đăng Quang** - Project Manager - [GitHub](https://github.com/QuangTN205)
+- **Trần Gia Huy** - Project Manager - [GitHub]((https://github.com/TranGiaHuy2))
+
