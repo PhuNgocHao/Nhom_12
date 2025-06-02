@@ -49,10 +49,10 @@ npx drizzle-kit push
 npm run dev
 ```
 
-# Thành viên nhóm
+## Thành viên nhóm
 
-# - Phù Ngọc Hào - [GitHub](https://github.com/PhuNgocHao)
-# - Nguyễn Quốc Khải - [GitHub](https://github.com/nguyenquockhai-gif)
-# - Tạ Đăng Quang  - [GitHub](https://github.com/QuangTN205)
-# - Trần Gia Huy  - [GitHub](https://github.com/TranGiaHuy2)
+### - Phù Ngọc Hào - [GitHub](https://github.com/PhuNgocHao)
+### - Nguyễn Quốc Khải - [GitHub](https://github.com/nguyenquockhai-gif)
+### - Tạ Đăng Quang  - [GitHub](https://github.com/QuangTN205)
+### - Trần Gia Huy  - [GitHub](https://github.com/TranGiaHuy2)
 
