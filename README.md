@@ -31,7 +31,7 @@ Một ứng dụng clone Duolingo được xây dựng bằng **Next.js**, **Rea
 
 # 🛠️ Cài đặt và chạy dự án
 
-```bash
+
 # 1. Clone repository
 git clone https://github.com/your-username/duolingo-clone.git
 cd duolingo-clone
