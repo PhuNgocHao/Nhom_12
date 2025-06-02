@@ -1,4 +1,4 @@
-# 🟢 Duolingo Clone App
+# 🦉🟢 Duolingo Clone App 📚
 
 Một ứng dụng clone Duolingo được xây dựng bằng **Next.js**, **React**, **Drizzle ORM**, **PostgreSQL**, **Stripe**, và **Tailwind CSS**, theo hướng dẫn từ video của [Code With Antonio](https://www.youtube.com/watch?v=dP75Khfy4s4).
 
