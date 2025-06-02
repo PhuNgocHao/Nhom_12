@@ -47,6 +47,7 @@ npx drizzle-kit push
 
 # 5. Khởi động dự án
 npm run dev
+```
 
 # Thành viên nhóm
 
