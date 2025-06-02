@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const font = Nunito({
   variable: "--font-geist-sans",
@@ -18,11 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider 
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      afterSignOutUrl="/">
       <html lang="en">
         <body
           className={font.variable}>
           {children}
         </body>
       </html>
+    </ClerkProvider>
   );
 }
