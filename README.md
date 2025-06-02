@@ -29,7 +29,7 @@ Một ứng dụng clone Duolingo được xây dựng bằng **Next.js**, **Rea
 
 ---
 
-## 🛠️ Cài đặt và chạy dự án
+# 🛠️ Cài đặt và chạy dự án
 
 ```bash
 # 1. Clone repository
