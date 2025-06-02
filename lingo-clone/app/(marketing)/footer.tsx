@@ -55,17 +55,7 @@ export const Footer = () => {
               className="mr-4 rounded-md"
             />
             Japanese
-          </Button>
-          <Button size="lg" variant="ghost" /*className="w-full"*/>
-            <Image
-              src="/vn.svg"
-              alt="Vietnamese"
-              height={32}
-              width={40}
-              className="mr-4 rounded-md"
-            />
-            Vietnamese
-          </Button>          
+          </Button>        
         </div>
       </footer>
   );

@@ -29,16 +29,12 @@ export default function Home() {
             <SignedOut>
               <SignUpButton 
               mode="modal"
-
-
                 >
                 <Button size="lg" variant="secondary" className="w-full">
                   Bắt đầu
                 </Button>
               </SignUpButton>
-              <SignInButton mode="modal"
-              
-              
+              <SignInButton mode="modal"              
               >
                 <Button size="lg" variant="primaryOutline" className="w-full">
                   Tôi đã có tài khoản.
@@ -48,7 +44,7 @@ export default function Home() {
             <SignedIn>
               <Button size="lg" variant="secondary" className="w-full" asChild>
                 <Link href="/learn">
-                  Tiếp tục quá trình học.
+                  Tiếp tục học.
                 </Link>
               </Button>
             </SignedIn>
