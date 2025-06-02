@@ -1,18 +1,51 @@
-# Nhom_12
-# Dự án:tạo phần mềm tự học ngôn ngữ Duolingo clone có đầy đủ các tác vụ cơ bản, có thể lựa chọn khóa học, bài học để tương tác với AI để tạo ra câu hỏi.
-## Tính năng chính 
-- **Lựa chọn khóa học và bài học:** Người dùng có thể chọn các khóa học ngôn ngữ và bài học phù hợp với nhu cầu của mình.
-- **Có thanh tim để người học tập trung và có động lực:** Hiển thị số lượng tim (lives) còn lại để người học tập trung và duy trì động lực trong quá trình học.
-- **Có thông báo khi hoàn thành bài học :** Người dùng nhận được thông báo khi hoàn thành một bài học
-- **Thống kê trái tim còn lại và điểm :** Theo dõi số tim còn lại và điểm số để đánh giá tiến trình học tập.
-- **Hệ thống cửa hàng :** Cho phép người dùng sử dụng điểm tích lũy để mua các vật phẩm trong cửa hàng.
-- **Bảng xếp hạng người dùng :** Hiển thị thứ hạng người dùng dựa trên điểm số và thành tích học tập.
-## Công nghệ sử dụng 
-- React, Next.js
-- Tailwind CSS
-- Drizzle ORM
-- Stripe (hệ thống thanh toán)
-- Các thư viện hỗ trợ khác
+# 🟢 Duolingo Clone App
+
+Một ứng dụng clone Duolingo được xây dựng bằng **Next.js**, **React**, **Drizzle ORM**, **PostgreSQL**, **Stripe**, và **Tailwind CSS**, theo hướng dẫn từ video của [Code With Antonio](https://www.youtube.com/watch?v=dP75Khfy4s4).
+
+## 🚀 Tính năng
+
+- ✅ Xác thực người dùng với **NextAuth**
+- ✅ Học ngôn ngữ qua các bài kiểm tra đơn giản
+- ✅ Giao diện người dùng hiện đại với **Shadcn UI**
+- ✅ Hệ thống điểm kinh nghiệm (XP) và cấp độ
+- ✅ Thanh toán nâng cấp tài khoản qua **Stripe**
+- ✅ Quản lý dữ liệu với **Drizzle ORM** và **PostgreSQL**
+- ✅ Triển khai với **Vercel** (hoặc tự host)
+
+---
+
+## 🧱 Công nghệ sử dụng
+
+- **Next.js 14 (App Router)**
+- **React 18**
+- **Tailwind CSS**
+- **Shadcn UI**
+- **TypeScript**
+- **NextAuth (Authentication)**
+- **Drizzle ORM + PostgreSQL (Database)**
+- **Stripe (Payments)**
+
+---
+
+## 🛠️ Cài đặt và chạy dự án
+
+```bash
+# 1. Clone repo
+git clone https://github.com/your-username/duolingo-clone.git
+cd duolingo-clone
+
+# 2. Cài đặt các dependencies
+npm install
+
+# 3. Thiết lập biến môi trường
+cp .env.example .env
+# → Điền thông tin DB, Stripe, NextAuth vào file .env
+
+# 4. Khởi tạo và migrate database
+npx drizzle-kit push
+
+# 5. Chạy app
+npm run dev
 
 
 # Thành viên nhóm
