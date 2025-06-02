@@ -28,10 +28,9 @@ Một ứng dụng clone Duolingo được xây dựng bằng **Next.js**, **Rea
 - **Stripe (Payments)**
 
 ---
+## 🛠️ Cài đặt và chạy dự án
 
-# 🛠️ Cài đặt và chạy dự án
-
-
+```bash
 # 1. Clone repository
 git clone https://github.com/your-username/duolingo-clone.git
 cd duolingo-clone
@@ -48,7 +47,6 @@ npx drizzle-kit push
 
 # 5. Khởi động dự án
 npm run dev
-
 
 # Thành viên nhóm
 
