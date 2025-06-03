@@ -19,7 +19,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col items-center gap-y-8">
         <h1 className="text-xl lg:text-3xl font-bold text-neutral-600 max-w-[480px] text-center">
-          Học, thực hành và thành thạo ngôn ngữ mới với Lingo.
+          Learn, practice and master new languages with Lingo.
         </h1>
         <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">
           <ClerkLoading>
@@ -31,20 +31,20 @@ export default function Home() {
               mode="modal"
                 >
                 <Button size="lg" variant="secondary" className="w-full">
-                  Bắt đầu
+                  Get Started.
                 </Button>
               </SignUpButton>
               <SignInButton mode="modal"              
               >
                 <Button size="lg" variant="primaryOutline" className="w-full">
-                  Tôi đã có tài khoản.
+                  I already have an account.
                 </Button>
               </SignInButton>
             </SignedOut>
             <SignedIn>
               <Button size="lg" variant="secondary" className="w-full" asChild>
                 <Link href="/learn">
-                  Tiếp tục học.
+                  Countinue Learning.
                 </Link>
               </Button>
             </SignedIn>

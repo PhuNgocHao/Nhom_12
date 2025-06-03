@@ -32,7 +32,7 @@ export const Header = () => {
                 <SignedOut>
                     <SignInButton>
                         <Button size="lg" variant="ghost">
-                            Đăng nhập
+                            Login
                         </Button>
                     </SignInButton>
                 </SignedOut>
