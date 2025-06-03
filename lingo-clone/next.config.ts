@@ -1,7 +1,15 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    serverActions: {
+      allowedOrigins: [
+        'localhost:3000',
+        '127.0.0.1:3000',
+        '*.codespaces.githubusercontent.com',
+        '*.github.dev',
+      ],
+    },
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
