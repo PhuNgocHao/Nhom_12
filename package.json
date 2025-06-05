@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "dependencies": {
     "@prisma/client": "^6.8.2",
+    "dotenv": "^16.5.0",
     "styled-components": "^6.1.18"
   },
   "scripts": {
-    "db:studio": "prisma studio",
     "db:studio": "npx prisma studio"
   },
   "devDependencies": {
