@@ -3,41 +3,11 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
-    "db:studio": "drizzle-kit studio",
-    "db:push": "drizzle-kit push"
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:studio": "npx prisma studio",
+    "db:push": "npx drizzle-kit push:pg",
   },
-  "dependencies": {
-    "@prisma/client": "^6.8.2",
-    "dotenv": "^16.5.0",
-    "styled-components": "^6.1.18",
-    "@clerk/nextjs": "^4.31.5",
-    "@neondatabase/serverless": "^0.9.0",
-    "@radix-ui/react-avatar": "^1.0.4",
-    "@radix-ui/react-dialog": "^1.0.5",
-    "@radix-ui/react-progress": "^1.0.3",
-    "@radix-ui/react-separator": "^1.0.3",
-    "@radix-ui/react-slot": "^1.0.2",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
-    "drizzle-orm": "^0.30.4",
-    "lucide-react": "^0.359.0",
-    "next": "14.2.21",
-    "next-themes": "^0.3.0",
-    "ra-data-simple-rest": "^4.16.12",
-    "react": "^18",
-    "react-admin": "^4.16.13",
-    "react-circular-progressbar": "^2.1.0",
-    "react-confetti": "^6.1.0",
-    "react-dom": "^18",
-    "react-use": "^17.5.0",
-    "sonner": "^1.4.32",
-    "stripe": "^14.22.0",
-    "tailwind-merge": "^2.2.2",
-    "tailwindcss-animate": "^1.0.7",
-    "zustand": "^4.5.2"
-  },
-  "devDependencies": {
-    "drizzle-kit": "^0.31.1",
-    "prisma": "^6.8.2"
-  }
+  
 }
