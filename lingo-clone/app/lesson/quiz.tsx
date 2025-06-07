@@ -1,63 +1,69 @@
 "use client";
 
-import { useState, useTransition } from "react";
-
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import Confetti from "react-confetti";
-import { useAudio, useWindowSize, useMount } from "react-use";
 import { toast } from "sonner";
+import Image from "next/image";
+import Confetti from "react-confetti";
+import { useRouter } from "next/navigation";
+import { useState, useTransition } from "react";
+import { useAudio, useWindowSize, useMount } from "react-use";
 
-import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { reduceHearts } from "@/actions/user-progress";
-import { MAX_HEARTS } from "@/constants";
-import { challengeOptions, challenges, userSubscription } from "@/db/schema";
 import { useHeartsModal } from "@/store/use-hearts-modal";
+import { challengeOptions, challenges, userSubscription } from "@/db/schema";
 import { usePracticeModal } from "@/store/use-practice-modal";
+import { upsertChallengeProgress } from "@/actions/challenge-progress";
 
-import { Challenge } from "./challenge";
-import { Footer } from "./footer";
 import { Header } from "./header";
-import { QuestionBubble } from "./question-bubble";
+import { Footer } from "./footer";
+import { Challenge } from "./challenge";
 import { ResultCard } from "./result-card";
-type QuizProps = {
+import { QuestionBubble } from "./question-bubble";
+
+type Props ={
   initialPercentage: number;
   initialHearts: number;
   initialLessonId: number;
   initialLessonChallenges: (typeof challenges.$inferSelect & {
     completed: boolean;
-    challengeOptions: (typeof challengeOptions.$inferSelect)[];
+    challengeOptions: typeof challengeOptions.$inferSelect[];
   })[];
-  userSubscription:
-    | (typeof userSubscription.$inferSelect & {
-        isActive: boolean;
-      })
-    | null;
+  userSubscription: typeof userSubscription.$inferSelect & {
+    isActive: boolean;
+  } | null;
 };
+
 export const Quiz = ({
   initialPercentage,
   initialHearts,
   initialLessonId,
   initialLessonChallenges,
   userSubscription,
-}: QuizProps) => {
-  const [correctAudio, _c, correctControls] = useAudio({ src: "/correct.wav" });
-  const [incorrectAudio, _i, incorrectControls] = useAudio({
-    src: "/incorrect.wav",
-  });
-  const [finishAudio] = useAudio({
-    src: "/finish.mp3",
-    autoPlay: true,
-  });
-  const { width, height } = useWindowSize();
-   const router = useRouter();
-  const [pending, startTransition] = useTransition();
+}: Props) => {
   const { open: openHeartsModal } = useHeartsModal();
   const { open: openPracticeModal } = usePracticeModal();
 
   useMount(() => {
-    if (initialPercentage === 100) openPracticeModal();
+    if (initialPercentage === 100) {
+      openPracticeModal();
+    }
   });
+
+  const { width, height } = useWindowSize();
+
+  const router = useRouter();
+
+  const [finishAudio] = useAudio({ src: "/finish.mp3", autoPlay: true });
+  const [
+    correctAudio,
+    _c,
+    correctControls,
+  ] = useAudio({ src: "/correct.wav" });
+  const [
+    incorrectAudio,
+    _i,
+    incorrectControls,
+  ] = useAudio({ src: "/incorrect.wav" });
+  const [pending, startTransition] = useTransition();
 
   const [lessonId] = useState(initialLessonId);
   const [hearts, setHearts] = useState(initialHearts);
@@ -66,14 +72,12 @@ export const Quiz = ({
   });
   const [challenges] = useState(initialLessonChallenges);
   const [activeIndex, setActiveIndex] = useState(() => {
-    const uncompletedIndex = challenges.findIndex(
-      (challenge) => !challenge.completed
-    );
-     return uncompletedIndex === -1 ? 0 : uncompletedIndex;
+    const uncompletedIndex = challenges.findIndex((challenge) => !challenge.completed);
+    return uncompletedIndex === -1 ? 0 : uncompletedIndex;
   });
 
   const [selectedOption, setSelectedOption] = useState<number>();
-  const [status, setStatus] = useState<"none" | "wrong" | "correct">("none");
+  const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
 
   const challenge = challenges[activeIndex];
   const options = challenge?.challengeOptions ?? [];
@@ -87,7 +91,8 @@ export const Quiz = ({
 
     setSelectedOption(id);
   };
-    const onContinue = () => {
+
+  const onContinue = () => {
     if (!selectedOption) return;
 
     if (status === "wrong") {
@@ -102,9 +107,12 @@ export const Quiz = ({
       setSelectedOption(undefined);
       return;
     }
-const correctOption = options.find((option) => option.correct);
 
-    if (!correctOption) return;
+    const correctOption = options.find((option) => option.correct);
+
+    if (!correctOption) {
+      return;
+    }
 
     if (correctOption.id === selectedOption) {
       startTransition(() => {
@@ -115,18 +123,18 @@ const correctOption = options.find((option) => option.correct);
               return;
             }
 
-            void correctControls.play();
+            correctControls.play();
             setStatus("correct");
             setPercentage((prev) => prev + 100 / challenges.length);
 
             // This is a practice
             if (initialPercentage === 100) {
-              setHearts((prev) => Math.min(prev + 1, MAX_HEARTS));
+              setHearts((prev) => Math.min(prev + 1, 5));
             }
           })
-          .catch(() => toast.error("Something went wrong. Please try again."));
+          .catch(() => toast.error("Something went wrong. Please try again."))
       });
-       } else {
+    } else {
       startTransition(() => {
         reduceHearts(challenge.id)
           .then((response) => {
@@ -135,27 +143,30 @@ const correctOption = options.find((option) => option.correct);
               return;
             }
 
-            void incorrectControls.play();
+            incorrectControls.play();
             setStatus("wrong");
 
-            if (!response?.error) setHearts((prev) => Math.max(prev - 1, 0));
+            if (!response?.error) {
+              setHearts((prev) => Math.max(prev - 1, 0));
+            }
           })
-          .catch(() => toast.error("Something went wrong. Please try again."));
+          .catch(() => toast.error("Something went wrong. Please try again."))
       });
     }
   };
-if (!challenge) {
+
+  if (!challenge) {
     return (
       <>
         {finishAudio}
         <Confetti
-          recycle={false}
-          numberOfPieces={500}
-          tweenDuration={10_000}
           width={width}
           height={height}
+          recycle={false}
+          numberOfPieces={500}
+          tweenDuration={10000}
         />
-        <div className="mx-auto flex h-full max-w-lg flex-col items-center justify-center gap-y-4 text-center lg:gap-y-8">
+        <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
           <Image
             src="/finish.svg"
             alt="Finish"
@@ -163,28 +174,28 @@ if (!challenge) {
             height={100}
             width={100}
           />
-
           <Image
             src="/finish.svg"
             alt="Finish"
             className="block lg:hidden"
-            height={100}
-            width={100}
+            height={50}
+            width={50}
           />
-
-          <h1 className="text-lg font-bold text-neutral-700 lg:text-3xl">
+          <h1 className="text-xl lg:text-3xl font-bold text-neutral-700">
             Great job! <br /> You&apos;ve completed the lesson.
           </h1>
-
-          <div className="flex w-full items-center gap-x-4">
-            <ResultCard variant="points" value={challenges.length * 10} />
+          <div className="flex items-center gap-x-4 w-full">
+            <ResultCard
+              variant="points"
+              value={challenges.length * 10}
+            />
             <ResultCard
               variant="hearts"
-              value={userSubscription?.isActive ? Infinity : hearts}
+              value={hearts}
             />
           </div>
         </div>
-         <Footer
+        <Footer
           lessonId={lessonId}
           status="completed"
           onCheck={() => router.push("/learn")}
@@ -193,10 +204,9 @@ if (!challenge) {
     );
   }
 
-  const title =
-    challenge.type === "ASSIST"
-      ? "Select the correct meaning"
-      : challenge.question;
+  const title = challenge.type === "ASSIST" 
+    ? "Select the correct meaning"
+    : challenge.question;
 
   return (
     <>
@@ -207,19 +217,16 @@ if (!challenge) {
         percentage={percentage}
         hasActiveSubscription={!!userSubscription?.isActive}
       />
-
       <div className="flex-1">
-        <div className="flex h-full items-center justify-center">
-          <div className="flex w-full flex-col gap-y-12 px-6 lg:min-h-[350px] lg:w-[600px] lg:px-0">
-            <h1 className="text-center text-lg font-bold text-neutral-700 lg:text-start lg:text-3xl">
+        <div className="h-full flex items-center justify-center">
+          <div className="lg:min-h-[350px] lg:w-[600px] w-full px-6 lg:px-0 flex flex-col gap-y-12">
+            <h1 className="text-lg lg:text-3xl text-center lg:text-start font-bold text-neutral-700">
               {title}
             </h1>
-
             <div>
               {challenge.type === "ASSIST" && (
                 <QuestionBubble question={challenge.question} />
               )}
-
               <Challenge
                 options={options}
                 onSelect={onSelect}
@@ -232,7 +239,6 @@ if (!challenge) {
           </div>
         </div>
       </div>
-
       <Footer
         disabled={pending || !selectedOption}
         status={status}
