@@ -12,6 +12,8 @@
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
     "@radix-ui/react-progress": "^1.1.7",
-    "drizzle-orm": "^0.44.2"
+    "drizzle-orm": "^0.44.2",
+    "ra-data-simple-rest": "^5.8.3",
+    "react-admin": "^5.8.3"
   }
 }
