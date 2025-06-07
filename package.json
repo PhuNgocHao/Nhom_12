@@ -8,5 +8,8 @@
     "lint": "next lint",
     "db:studio": "npx prisma studio",
     "db:push": "npx drizzle-kit push:pg"
+  },
+  "dependencies": {
+    "@radix-ui/react-progress": "^1.1.7"
   }
 }
