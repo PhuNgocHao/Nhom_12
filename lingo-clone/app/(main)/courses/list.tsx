@@ -4,7 +4,7 @@ import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 
 import { courses, userProgress } from "@/db/schema";
-import { upserUserProgress } from "@/actions/user-progress";
+import { upsertUserProgress } from "@/actions/user-progress";
 
 import { Card } from "./card";
 
@@ -25,7 +25,7 @@ export const List = ({ courses, activeCourseId }: Props) => {
     }
 
     startTransition(() => {
-      upserUserProgress(id);
+      upsertUserProgress(id);
     });
   };
 
