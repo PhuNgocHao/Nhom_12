@@ -1,6 +1,6 @@
 import { SimpleForm, Create, TextInput, ReferenceInput, NumberInput, required } from "react-admin";
 
-export const LessonCreate = () => {
+export const UnitCreate = () => {
   return (
     <Create>
       <SimpleForm>
@@ -9,9 +9,14 @@ export const LessonCreate = () => {
           validate={[required()]} 
           label="Title"
         />
+        <TextInput 
+          source="description" 
+          validate={[required()]} 
+          label="Description"
+        />
         <ReferenceInput
-          source="unitId"
-          reference="units"
+          source="courseId"
+          reference="courses"
         />
         <NumberInput
           source="order"
