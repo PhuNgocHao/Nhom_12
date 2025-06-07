@@ -1,5 +1,4 @@
 import { SimpleForm, Create, TextInput, ReferenceInput, NumberInput, required } from "react-admin";
-
 export const LessonCreate = () => {
   return (
     <Create>
