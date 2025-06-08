@@ -7,7 +7,8 @@
     "start": "next start",
     "lint": "next lint",
     "db:studio": "npx prisma studio",
-    "db:push": "npx drizzle-kit push:pg"
+    "db:push": "npx drizzle-kit push:pg",
+    "db:prod": "npx drizzle-kit push"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
