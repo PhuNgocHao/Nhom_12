@@ -18,3 +18,54 @@ import { LessonList } from "./lesson/list";
 import { UnitCreate } from "./unit/create";
 import { UnitEdit } from "./unit/edit";
 import { UnitList } from "./unit/list";
+const dataProvider = simpleRestProvider("/api");
+
+const App = () => {
+  return (
+    <Admin dataProvider={dataProvider}>
+      <Resource
+        name="courses"
+        recordRepresentation="title"
+        list={CourseList}
+        create={CourseCreate}
+        edit={CourseEdit}
+      />
+
+      <Resource
+        name="units"
+        recordRepresentation="title"
+        list={UnitList}
+        create={UnitCreate}
+        edit={UnitEdit}
+      />
+       <Resource
+        name="lessons"
+        recordRepresentation="title"
+        list={LessonList}
+        create={LessonCreate}
+        edit={LessonEdit}
+      />
+
+      <Resource
+        name="challenges"
+        recordRepresentation="question"
+        list={ChallengeList}
+        create={ChallengeCreate}
+        edit={ChallengeEdit}
+      />
+
+      <Resource
+        name="challengeOptions"
+        recordRepresentation="text"
+        list={ChallengeOptionsList}
+        create={ChallengeOptionCreate}
+        edit={ChallengeOptionEdit}
+        options={{
+          label: "Challenge Options",
+        }}
+      />
+    </Admin>
+  );
+};
+
+export default App;
