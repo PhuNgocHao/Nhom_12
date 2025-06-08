@@ -10,7 +10,6 @@ import { POINTS_TO_REFILL } from "@/constants";
 import { getCourseById, getUserProgress, getUserSubscription } from "@/db/queries";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
 
-// Đăng ký hoặc cập nhật user progress
 export const upsertUserProgress = async (courseId: number) => {
   const { userId } = await auth();
   const user = await currentUser();
@@ -25,10 +24,9 @@ export const upsertUserProgress = async (courseId: number) => {
     throw new Error("Course not found");
   }
 
-  // Có thể bật lại đoạn này khi cần kiểm tra nội dung khoá học
-  // if (!course.units.length || !course.units[0].lessons.length) {
-  //   throw new Error("Course is empty");
-  // }
+  if (!course.units.length || !course.units[0].lessons.length) {
+    throw new Error("Course is empty");
+  }
 
   const existingUserProgress = await getUserProgress();
 
@@ -56,7 +54,6 @@ export const upsertUserProgress = async (courseId: number) => {
   redirect("/learn");
 };
 
-// Giảm số lượng tim khi làm bài
 export const reduceHearts = async (challengeId: number) => {
   const { userId } = await auth();
 
@@ -87,7 +84,7 @@ export const reduceHearts = async (challengeId: number) => {
   const isPractice = !!existingChallengeProgress;
 
   if (isPractice) {
-    return { error: "practice" };
+    return { error: "practice" }; 
   }
 
   if (!currentUserProgress) {
@@ -113,7 +110,6 @@ export const reduceHearts = async (challengeId: number) => {
   revalidatePath(`/lesson/${lessonId}`);
 };
 
-// Nạp lại tim
 export const refillHearts = async () => {
   const currentUserProgress = await getUserProgress();
 
@@ -139,4 +135,3 @@ export const refillHearts = async () => {
   revalidatePath("/quests");
   revalidatePath("/leaderboard");
 };
-
