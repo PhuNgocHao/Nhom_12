@@ -32,8 +32,8 @@ Một ứng dụng clone Duolingo được xây dựng bằng **Next.js**, **Rea
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/your-username/duolingo-clone.git
-cd duolingo-clone
+git clone https://github.com/PhuNgocHao/Nhom_12/tree/main/lingo-clone.git
+cd lingo-clone
 
 # 2. Cài đặt các dependencies
 npm install
